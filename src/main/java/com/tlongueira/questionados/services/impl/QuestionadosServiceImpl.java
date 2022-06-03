@@ -28,7 +28,7 @@ public class QuestionadosServiceImpl implements QuestionadosService {
 //		int cantidadPreguntas = listaPreguntas.size();
 //		Random rand = new Random();
 //		Pregunta preguntaRandom = listaPreguntas.get(rand.nextInt(0, cantidadPreguntas));
-		Pregunta preguntaRandom = preguntaRepo.getPreguntaRandom();
+		Pregunta preguntaRandom = preguntaRepo.getPreguntaRandom(id);
 		PreguntaUsuarioDTO preguntaObtenida = new PreguntaUsuarioDTO();
 		preguntaObtenida.setDescripcion(preguntaRandom.getDescripcion());
 		preguntaObtenida.setId(preguntaRandom.getId());
