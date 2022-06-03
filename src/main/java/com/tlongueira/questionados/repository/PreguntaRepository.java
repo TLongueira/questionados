@@ -15,4 +15,7 @@ public interface PreguntaRepository extends JpaRepository<Pregunta, Long>{
 	List<Pregunta> buscarPorCategoriaId(
 			 @Param("categoriaId") Long categoriaId
 			);
+	
+	@Query("SELECT p FROM preguntas p ORDER BY RAND() LIMIT 1")
+	Pregunta getPreguntaRandom();
 }
