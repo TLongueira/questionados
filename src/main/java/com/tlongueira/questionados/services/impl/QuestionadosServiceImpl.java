@@ -1,6 +1,8 @@
 package com.tlongueira.questionados.services.impl;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,11 +26,12 @@ public class QuestionadosServiceImpl implements QuestionadosService {
 
 	@Override
 	public PreguntaUsuarioDTO obtenerPreguntaRandomByCategoriaId(Long id) {
-//		List<Pregunta> listaPreguntas = preguntaRepo.buscarPorCategoriaId(id);
+		List<Pregunta> listaPreguntas = preguntaRepo.buscarPorCategoriaId(id);
+		Collections.shuffle(listaPreguntas);
 //		int cantidadPreguntas = listaPreguntas.size();
 //		Random rand = new Random();
-//		Pregunta preguntaRandom = listaPreguntas.get(rand.nextInt(0, cantidadPreguntas));
-		Pregunta preguntaRandom = preguntaRepo.getPreguntaRandom(id);
+		Pregunta preguntaRandom = listaPreguntas.get(0);
+		//Pregunta preguntaRandom = preguntaRepo.getPreguntaRandom(id);
 		PreguntaUsuarioDTO preguntaObtenida = new PreguntaUsuarioDTO();
 		preguntaObtenida.setDescripcion(preguntaRandom.getDescripcion());
 		preguntaObtenida.setId(preguntaRandom.getId());
